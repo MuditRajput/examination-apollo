@@ -1,0 +1,40 @@
+{
+  "name": "apollo-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.9.7",
+    "apollo-server-express": "^2.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "merge-graphql-schemas": "^1.7.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuditRajput/apollo-server.git"
+  },
+  "author": "Mudit Rajput",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuditRajput/apollo-server/issues"
+  },
+  "homepage": "https://github.com/MuditRajput/apollo-server#readme"
+}

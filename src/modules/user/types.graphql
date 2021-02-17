@@ -1,0 +1,22 @@
+type User {
+  originalId: ID!
+  name: String!
+  email: String!
+  role: String
+  createdAt: String
+}
+
+type Token {
+  token: String
+}
+
+type loginResponse {
+  message: String
+  status: String
+  data: Token
+}
+
+input loginUserPayload {
+  email: String!
+  password: String!
+}

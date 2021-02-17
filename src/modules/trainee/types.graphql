@@ -1,0 +1,35 @@
+input createUserInput {
+  name: String!
+  email: String!
+  role: String
+  password: String!
+}
+
+input updateUserInput {
+  name: String
+  email: String
+}
+
+type traineeResponse {
+  message: String
+  data: User
+  status: String
+}
+
+type getAll {
+  totalCount: Int
+  UsersList: [User]
+}
+
+type getAllTrainees {
+  message: String
+  data: getAll
+  status: String
+}
+
+input getAllOptions {
+  skip: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
