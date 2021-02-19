@@ -2,6 +2,7 @@ import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 import path from 'path';
 import { userQuery, userMutation } from './user';
 import { traineeMutation, traineeQuery, traineeSubscription } from './trainee';
+import { examinationQuery, examinationMutation } from './examination';
 
 const dirname = path.resolve();
 
@@ -14,10 +15,12 @@ export default {
     Query: {
       ...traineeQuery,
       ...userQuery,
+      ...examinationQuery
     },
     Mutation: {
       ...userMutation,
       ...traineeMutation,
+      ...examinationMutation
     },
     Subscription: traineeSubscription,
   },

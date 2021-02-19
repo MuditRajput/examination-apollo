@@ -2,13 +2,17 @@ type Query {
   getMyProfile: User!
   getAllTrainees(options: getAllOptions): getAllTrainees!
   getOneTrainee(id:ID!): traineeResponse!
+  getAllExamination: getExamResponse!
 }
 
 type Mutation {
   createTrainee(user: createUserInput): traineeResponse!
   updateTrainee(id: ID!, dataToUpdate: updateUserInput!): traineeResponse!
-  deleteTrainee(id:ID!): traineeResponse!
+  deleteTrainee(id: ID!): traineeResponse!
   loginUser(payload: loginUserPayload!): loginResponse!
+  createExamination(subject: String!): examResponse!
+  updateExamination(payload: updateExaminationInput!): examResponse!
+  deleteExamination(id: ID!): examResponse!
 }
 
 type Subscription {

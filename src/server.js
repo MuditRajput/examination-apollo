@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import cors from 'cors';
 import Schema from './modules';
-import { UserApi, TraineeApi } from './datasource';
+import { UserApi, TraineeApi, ExaminationApi } from './datasource';
 
 class Server {
   constructor(config) {
@@ -33,6 +33,7 @@ class Server {
       dataSources: () => ({
         userApi: new UserApi(),
         traineeApi: new TraineeApi(),
+        examinationApi: new ExaminationApi(),
       }),
       context: ({ req }) => {
         if (req) {

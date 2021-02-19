@@ -1,0 +1,25 @@
+type getExamResponse {
+  message: String
+  data: [exam]
+  status: String
+}
+
+input updateExaminationInput {
+  originalId: String
+  dataToUpdate: dataToUpdatePayload
+}
+
+input dataToUpdatePayload {
+  subject: String
+}
+
+type examResponse {
+  message: String
+  data: exam
+  status: String
+}
+
+type exam {
+  originalId: String
+  subject: String
+}
