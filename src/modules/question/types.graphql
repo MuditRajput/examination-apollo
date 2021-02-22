@@ -1,0 +1,44 @@
+type getQuestionResponse {
+  message: String!
+  data: [questions]
+  status: String!
+}
+
+type questions {
+  options: [String]
+  question: String
+  originalId: String
+}
+
+input questionPayloadInput {
+  originalId: String!
+  questionList: [questionInput]!
+}
+
+input questionInput {
+  options: [String]
+  question: String
+  correctOption: String
+}
+
+type questionResponse {
+  message: String
+  data: questions
+  status: String
+}
+
+input answersInput {
+  originalId: String
+  answer: String
+}
+
+type submitResponse {
+  originalId: String
+  result: [result]
+  questionSet: String
+}
+
+type result {
+  originalId: String
+  result: String
+}

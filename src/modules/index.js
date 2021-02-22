@@ -3,6 +3,7 @@ import path from 'path';
 import { userQuery, userMutation } from './user';
 import { traineeMutation, traineeQuery, traineeSubscription } from './trainee';
 import { examinationQuery, examinationMutation } from './examination';
+import { questionMutation, questionQuery } from './question';
 
 const dirname = path.resolve();
 
@@ -15,12 +16,14 @@ export default {
     Query: {
       ...traineeQuery,
       ...userQuery,
-      ...examinationQuery
+      ...examinationQuery,
+      ...questionQuery,
     },
     Mutation: {
       ...userMutation,
       ...traineeMutation,
-      ...examinationMutation
+      ...examinationMutation,
+      ...questionMutation,
     },
     Subscription: traineeSubscription,
   },

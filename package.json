@@ -29,12 +29,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MuditRajput/apollo-server.git"
+    "url": "git+https://github.com/MuditRajput/examination-apollo.git"
   },
   "author": "Mudit Rajput",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MuditRajput/apollo-server/issues"
+    "url": "https://github.com/MuditRajput/examination-apollo/issues"
   },
-  "homepage": "https://github.com/MuditRajput/apollo-server#readme"
+  "homepage": "https://github.com/MuditRajput/examination-apollo#readme"
 }
