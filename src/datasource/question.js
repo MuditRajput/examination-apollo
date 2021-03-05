@@ -1,4 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+import { ApolloError } from 'apollo-server-express';
 import config from '../config/configurations';
 
 class QuestionApi extends RESTDataSource {
@@ -14,7 +15,15 @@ class QuestionApi extends RESTDataSource {
   async getAll(id) {
     try {
       const response = await this.get(`${id}`);
-      return response;
+      if (response.write) {
+        return response;
+      }
+      const { message, data, status} = response;
+      const modifiedData = data.map((question) => {
+        delete question.correctOption
+        return question
+      })
+      return { message, data: modifiedData, status };
     } catch (err) {
       const { extensions: { response: { body } = {} } = {} } = err;
       return body;
@@ -41,6 +50,16 @@ class QuestionApi extends RESTDataSource {
     }
   }
 
+  async deleteAllQuestions(id) {
+    try {
+      const response = await this.delete(`delete/${id}`);
+      return response;
+    } catch (err) {
+      const { extensions: { response: { body } = {} } = {} } = err;
+      return body;
+    }
+  }
+
   async deleteQuestions(id) {
     try {
       const response = await this.delete(`/${id}`);
@@ -53,11 +72,11 @@ class QuestionApi extends RESTDataSource {
 
   async submitQuestions(payload) {
     try {
-      const response = await this.delete('/submit', payload);
+      const response = await this.post('/submit', payload);
       return response.data;
     } catch (err) {
-      const { extensions: { response: { body } = {} } = {} } = err;
-      return body;
+      const { extensions: { response: { body: { message = 'Something went Wrong', status = '500' } = {} } = {} } = {} } = err;
+      throw new ApolloError(message, status);
     }
   }
 }

@@ -1,9 +1,8 @@
 export default {
     createExamination: async (parent, args, context) => {
       const { dataSources: { examinationApi } = {} } = context;
-      const { subject } = args;
-      console.log(subject);
-      const response = await examinationApi.create({ subject });
+      const { subject, description, maximumMarks } = args;
+      const response = await examinationApi.create({ subject, description, maximumMarks });
       return response;
     },
     updateExamination: async (parent, args, context) => {
@@ -14,8 +13,9 @@ export default {
     },
     deleteExamination: async (parent, args, context) => {
         const { id = '' } = args;
-        const { dataSources: { examinationApi } = {} } = context;
+        const { dataSources: { examinationApi, questionApi } = {} } = context;
         const response = await examinationApi.deleteExam(id);
+        questionApi.deleteAllQuestions(id)
         return response;
     },
 }

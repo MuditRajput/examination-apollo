@@ -6,6 +6,7 @@ type getQuestionResponse {
 
 type questions {
   options: [String]
+  correctOption: String
   question: String
   originalId: String
 }
@@ -17,7 +18,7 @@ input questionPayloadInput {
 
 input questionInput {
   options: [String]
-  question: String
+  question: String!
   correctOption: String
 }
 
@@ -34,11 +35,6 @@ input answersInput {
 
 type submitResponse {
   originalId: String
-  result: [result]
+  result: JSON
   questionSet: String
-}
-
-type result {
-  originalId: String
-  result: String
 }

@@ -6,18 +6,28 @@ type Query {
   getAllQuestions(id:ID!): getQuestionResponse!
 }
 
+scalar JSON
+
+type MyObject {
+  myField: JSON
+}
+
+type Query {
+  objects: [MyObject]
+}
+
 type Mutation {
   createTrainee(user: createUserInput): traineeResponse!
   updateTrainee(id: ID!, dataToUpdate: updateUserInput!): traineeResponse!
   deleteTrainee(id: ID!): traineeResponse!
   loginUser(payload: loginUserPayload!): loginResponse!
-  createExamination(subject: String!): examResponse!
+  createExamination(subject: String!, description: String, maximumMarks: String): examResponse!
   updateExamination(payload: updateExaminationInput!): examResponse!
   deleteExamination(id: ID!): examResponse!
   createQuestions(payload: questionPayloadInput!): questionResponse!
   updateQuestions(originalId: ID!, dataToUpdate: questionInput): questionResponse!
   deleteQuestions(id: ID!): questionResponse!
-  submitQuestions(originalId: ID!, answersList: answersInput!, questionSet: String!): submitResponse
+  submitQuestions(answersList: JSON!, questionSet: ID!): submitResponse
 }
 
 type Subscription {

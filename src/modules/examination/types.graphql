@@ -5,12 +5,14 @@ type getExamResponse {
 }
 
 input updateExaminationInput {
-  originalId: String
+  originalId: ID!
   dataToUpdate: dataToUpdatePayload
 }
 
 input dataToUpdatePayload {
   subject: String
+  description: String
+  maximumMarks: String
 }
 
 type examResponse {
@@ -22,4 +24,6 @@ type examResponse {
 type exam {
   originalId: String
   subject: String
+  description: String
+  maximumMarks: String
 }

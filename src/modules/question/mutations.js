@@ -1,7 +1,7 @@
 export default {
     createQuestions: async (parent, args, context) => {
       const { dataSources: { questionApi } = {} } = context;
-      const { originalId, questionList } = args;
+      const { payload: { originalId, questionList } = {} } = args;
       const response = await questionApi.create({ originalId, questionList });
       return response;
     },
@@ -18,9 +18,9 @@ export default {
         return response;
     },
     submitQuestions: async (parent, args, context) => {
-        const { answersList, originalId, questionSet } = args;
+        const { answersList, questionSet } = args;
         const { dataSources: { questionApi } = {} } = context;
-        const response = await questionApi.submitQuestions({ answersList, originalId, questionSet });
+        const response = await questionApi.submitQuestions({ answersList:{ ...answersList }, questionSet });
         return response;
     }
 }
