@@ -1,6 +1,7 @@
 type getExamResponse {
   message: String
   data: [exam]
+  write: Boolean
   status: String
 }
 
