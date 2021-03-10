@@ -4,6 +4,7 @@ import { userQuery, userMutation } from './user';
 import { traineeMutation, traineeQuery, traineeSubscription } from './trainee';
 import { examinationQuery, examinationMutation } from './examination';
 import { questionMutation, questionQuery } from './question';
+import { resultQuery } from './result';
 import GraphQLJSON from 'graphql-type-json';
 
 const dirname = path.resolve();
@@ -20,6 +21,7 @@ export default {
       ...userQuery,
       ...examinationQuery,
       ...questionQuery,
+      ...resultQuery,
     },
     Mutation: {
       ...userMutation,

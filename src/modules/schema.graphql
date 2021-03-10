@@ -4,6 +4,8 @@ type Query {
   getOneTrainee(id:ID!): traineeResponse!
   getAllExamination: getExamResponse!
   getAllQuestions(id:ID!): getQuestionResponse!
+  getAllResult: getAllResultsResponse!
+  getOneResult(id: ID!): getOneResultResponse!
 }
 
 scalar JSON

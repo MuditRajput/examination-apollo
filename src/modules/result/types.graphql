@@ -1,0 +1,19 @@
+type getAllResultsResponse {
+  message: String!
+  data: [getOneResult]
+  status: String!
+}
+
+type getOneResultResponse {
+  message: String
+  data: getOneResult
+  status: String
+}
+
+type getOneResult {
+  result: JSON
+  userId: ID
+  originalId: ID
+  createdAt: String
+  questionSet: ID
+}
