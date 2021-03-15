@@ -1,8 +1,8 @@
 export default {
     createExamination: async (parent, args, context) => {
       const { dataSources: { examinationApi } = {} } = context;
-      const { subject, description, maximumMarks } = args;
-      const response = await examinationApi.create({ subject, description, maximumMarks });
+      const { subject, description, maximumMarks, time } = args;
+      const response = await examinationApi.create({ subject, description, maximumMarks, time });
       return response;
     },
     updateExamination: async (parent, args, context) => {

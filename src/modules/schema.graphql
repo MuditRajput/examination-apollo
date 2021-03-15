@@ -23,7 +23,7 @@ type Mutation {
   updateTrainee(id: ID!, dataToUpdate: updateUserInput!): traineeResponse!
   deleteTrainee(id: ID!): traineeResponse!
   loginUser(payload: loginUserPayload!): loginResponse!
-  createExamination(subject: String!, description: String, maximumMarks: String): examResponse!
+  createExamination(subject: String!, description: String, maximumMarks: String, time: String!): examResponse!
   updateExamination(payload: updateExaminationInput!): examResponse!
   deleteExamination(id: ID!): examResponse!
   createQuestions(payload: questionPayloadInput!): questionResponse!
