@@ -1,6 +1,7 @@
 type getQuestionResponse {
   message: String!
   data: [questions]
+  numberOfAttempts: Int
   status: String!
 }
 

@@ -27,5 +27,6 @@ type exam {
   subject: String
   description: String
   maximumMarks: String
+  maxAttempts: String
   time: String
 }
