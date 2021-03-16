@@ -13,11 +13,7 @@ class Server {
 
   corsParser() {
     console.log('inside cors');
-    const corsOptions = {
-      origin: '*',
-      optionsSuccessStatus: 200,
-    };
-    this.app.use(cors(corsOptions));
+    this.app.use(cors());
   }
 
   bootstrap() {
