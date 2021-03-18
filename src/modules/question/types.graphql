@@ -7,7 +7,8 @@ type getQuestionResponse {
 
 type questions {
   options: [String]
-  correctOption: String
+  correctOption: [String]
+  optionType: String
   question: String
   originalId: String
 }

@@ -15,15 +15,23 @@ class QuestionApi extends RESTDataSource {
   async getAll(id) {
     try {
       const response = await this.get(`${id}`);
-      if (response.write) {
-        return response;
-      }
-      const { message, data, status} = response;
-      const modifiedData = data.map((question) => {
-        delete question.correctOption
-        return question
-      })
-      return { message, data: modifiedData, status };
+      let optionType = 'radio';
+      const {
+        message, data, status, numberOfAttempts,
+      } = response;
+      let modifiedData = [];
+      modifiedData = data.map((question) => {
+        if (question.correctOption.length > 1) {
+          optionType = 'checkbox';
+        }
+        if (!response.write) {
+          delete question.correctOption;
+        }
+        return ({ ...question, optionType });
+      });
+      return {
+        message, data: modifiedData, status, numberOfAttempts,
+      };
     } catch (err) {
       const { extensions: { response: { body } = {} } = {} } = err;
       return body;
