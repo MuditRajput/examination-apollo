@@ -12,12 +12,12 @@ class QuestionApi extends RESTDataSource {
     request.headers.set('Authorization', this.context.token);
   }
 
-  async getAll(id) {
+  async getAll(id, payload) {
     try {
-      const response = await this.get(`${id}`);
+      const response = await this.get(`${id}`, payload);
       let optionType = 'radio';
       const {
-        message, data, status, numberOfAttempts,
+        message, data, status, numberOfAttempts, timeLeft,
       } = response;
       let modifiedData = [];
       modifiedData = data.map((question) => {
@@ -30,7 +30,7 @@ class QuestionApi extends RESTDataSource {
         return ({ ...question, optionType });
       });
       return {
-        message, data: modifiedData, status, numberOfAttempts,
+        message, data: modifiedData, status, numberOfAttempts, timeLeft,
       };
     } catch (err) {
       const { extensions: { response: { body } = {} } = {} } = err;

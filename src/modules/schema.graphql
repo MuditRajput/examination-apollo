@@ -3,7 +3,7 @@ type Query {
   getAllTrainees(options: getAllOptions): getAllTrainees!
   getOneTrainee(id:ID!): traineeResponse!
   getAllExamination: getExamResponse!
-  getAllQuestions(id:ID!): getQuestionResponse!
+  getAllQuestions(id:ID!, timeLimit:Int, submitted: String): getQuestionResponse!
   getAllResult: getAllResultsResponse!
   getOneResult(id: ID!): getOneResultResponse!
 }
