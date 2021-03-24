@@ -12,6 +12,7 @@ type questions {
   optionType: String
   question: String
   originalId: String
+  marks: String
 }
 
 input questionPayloadInput {
@@ -22,6 +23,7 @@ input questionPayloadInput {
 input questionInput {
   options: [String]
   question: String!
+  marks: String!
   correctOption: String
 }
 

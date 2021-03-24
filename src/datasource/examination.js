@@ -11,7 +11,7 @@ class ExaminationApi extends RESTDataSource {
     request.headers.set('Authorization', this.context.token);
   }
 
-  async getAll(payload) {
+  async getAll() {
     try {
       const response = await this.get('');
       return response;

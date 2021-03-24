@@ -15,12 +15,12 @@ class QuestionApi extends RESTDataSource {
   async getAll(id, payload) {
     try {
       const response = await this.get(`${id}`, payload);
-      let optionType = 'radio';
       const {
         message, data, status, numberOfAttempts, timeLeft,
       } = response;
       let modifiedData = [];
       modifiedData = data.map((question) => {
+        let optionType = 'radio';
         if (question.correctOption.length > 1) {
           optionType = 'checkbox';
         }
