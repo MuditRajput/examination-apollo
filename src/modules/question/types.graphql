@@ -24,7 +24,7 @@ input questionInput {
   options: [String]
   question: String!
   marks: String!
-  correctOption: String
+  correctOption: [String]
 }
 
 type questionResponse {
