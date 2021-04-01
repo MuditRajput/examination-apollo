@@ -1,11 +1,11 @@
 import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 import path from 'path';
+import GraphQLJSON from 'graphql-type-json';
 import { userQuery, userMutation } from './user';
 import { traineeMutation, traineeQuery, traineeSubscription } from './trainee';
 import { examinationQuery, examinationMutation } from './examination';
 import { questionMutation, questionQuery } from './question';
 import { resultQuery } from './result';
-import GraphQLJSON from 'graphql-type-json';
 
 const dirname = path.resolve();
 
