@@ -8,7 +8,7 @@ import { UserApi } from '../datasource';
 const server = new ApolloServer({
   ...schema,
   dataSources: () => ({
-    traineeApi: new UserApi(),
+    userApi: new UserApi(),
   }),
 });
 
@@ -34,6 +34,6 @@ describe('LOGIN API', () => {
         password: 'Qwerty@1',
       },
     });
-    expect(loginUser.status).toBe('200');
+    expect(loginUser.status).toBe('success');
   });
 });
