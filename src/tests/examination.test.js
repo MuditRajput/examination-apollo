@@ -58,6 +58,33 @@ describe('POST EXAMINATION API', () => {
     }
   }
   `;
+    const response = await mutate({
+      mutation: CREATE_EXAMINATION,
+      variables: {
+        subject: 'Physics',
+        description: 'testing',
+        maxAttempts: '4',
+      },
+    });
+    console.log(response.errors);
+    expect(response.errors[0].message).toBe('Variable "$time" of required type "String!" was not provided.');
+  });
+  test('create new examination', async () => {
+    const CREATE_EXAMINATION = gql`
+    mutation CreateTrainee($subject: String!, $description: String, $maxAttempts: String! $time: String!) {
+    createExamination(subject: $subject, description: $description, maxAttempts: $maxAttempts time: $time){
+      status
+      message
+      data{
+        subject
+        description
+        originalId
+        time
+        maxAttempts
+      }
+    }
+  }
+  `;
     const { data: { createExamination } } = await mutate({
       mutation: CREATE_EXAMINATION,
       variables: {

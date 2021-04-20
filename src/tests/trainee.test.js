@@ -97,12 +97,31 @@ describe('PUT TRAINEE API', () => {
     const { data: { updateTrainee } } = await mutate({
       mutation: UPDATE_TRAINEE,
       variables: {
-        id: '6064895eecac7409e8bdc73b',
+        id: '606433f69b294511bcc15b32',
         name: 'trainee 99',
         email: 'trainee99@successive.tech',
       },
     });
     expect(updateTrainee.status).toBe('success');
+  });
+  test('update existing trainee with wrong id', async () => {
+    const UPDATE_TRAINEE = gql`
+    mutation UpdateTrainee($id: ID!, $name: String!, $email: String!) {
+      updateTrainee(id: $id, dataToUpdate: { name: $name, email: $email }) {
+        message
+        status
+      }
+    }
+  `;
+    const { data: { updateTrainee } } = await mutate({
+      mutation: UPDATE_TRAINEE,
+      variables: {
+        id: '606433f69b294511bcc15b3',
+        name: 'trainee 99',
+        email: 'trainee99@successive.tech',
+      },
+    });
+    expect(updateTrainee.status).toBe('400');
   });
 });
 

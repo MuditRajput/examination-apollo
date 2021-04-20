@@ -58,4 +58,23 @@ describe('GET RESULT API', () => {
     const { data: { getOneResult } } = await query({ query: GETONE_RESULT, variables: { id: '6064146b99b83c2dd494e503' } });
     expect(getOneResult.status).toBe('success');
   });
+  test('get result with wrong id', async () => {
+    const GETONE_RESULT = gql`
+    query GetOneResult($id: ID!) {
+      getOneResult(id: $id){
+        data {
+          originalId
+          createdAt
+          result
+          questionSet
+          userId
+        }
+        message
+        status
+      }
+    }
+  `;
+    const { data: { getOneResult } } = await query({ query: GETONE_RESULT, variables: { id: '6064146b99b83c2dd494e50' } });
+    expect(getOneResult.status).toBe('400');
+  });
 });

@@ -36,4 +36,25 @@ describe('LOGIN API', () => {
     });
     expect(loginUser.status).toBe('success');
   });
+  test('Login User', async () => {
+    const LOGIN_USER = gql`
+    mutation LoginUser($email: String!, $password: String!) {
+      loginUser(payload: { email: $email, password: $password }) {
+        message
+        status
+        data {
+          token
+        }
+      }
+    }
+  `;
+    const { data: { loginUser } } = await mutate({
+      mutation: LOGIN_USER,
+      variables: {
+        email: 'head.trainer@successive.tec',
+        password: 'Qwerty@1',
+      },
+    });
+    expect(loginUser.status).toBe('403');
+  });
 });
